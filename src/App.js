@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Card from './Card/Card';
 import DrawButton from './DrawButton/DrawButton';
- 
+
+
 class App extends Component {
   constructor(props){
     super(props);
-
-    // this.app = firebase.initializeApp(DB_CONFIG);
-    // this.database = this.app.database().ref().child('cards');
     this.updateCard = this.updateCard.bind(this);
     this.state = {
       cards: [],
@@ -50,7 +48,7 @@ class App extends Component {
       <div className="App">
         <div className="cardRow">
           <Card 
-            imageurl={this.state.currentCard.imageurl+"?w=400&h=400"}
+            imageurl={this.state.currentCard.imageurl+"?w=700&h=400"}
             english={this.state.currentCard.english}
             german={this.state.currentCard.german}
             chinese={this.state.currentCard.chinese}
