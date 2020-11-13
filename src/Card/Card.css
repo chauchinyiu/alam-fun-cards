@@ -24,24 +24,41 @@
  
 .card.flip {
   transform: rotateY(180deg);
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
  
 .front,
-.back {
+.back{
   height: 400px;
   width: 700px;
   position: absolute;
   overflow: auto;
   text-align: center;
-  backface-visibility: hidden;
+}
+ 
+.front {
+   
+  backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden;
 }
 
- .back {
-  transform: rotateY(180deg);
-}  
+  .back {
 
+  transform: rotateY(-180deg);
+  backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden;
+}    
 
+.imageurl{
+  backface-visibility: inherit; 
+  -webkit-backface-visibility: inherit;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
 
 .english{
   color: #333;

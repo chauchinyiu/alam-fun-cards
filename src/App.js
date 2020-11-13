@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Card from './Card/Card';
 import DrawButton from './DrawButton/DrawButton';
+import NavBar from './NavBar/NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 class App extends Component {
@@ -45,6 +48,8 @@ class App extends Component {
 
   render() {
     return (
+      <div>
+      <NavBar/>
       <div className="App">
         <div className="cardRow">
           <Card 
@@ -57,6 +62,7 @@ class App extends Component {
         <div className="buttonRow">
           <DrawButton drawCard={this.updateCard}/>
         </div>
+      </div>
       </div>
     );
   }

@@ -47,4 +47,6 @@
   justify-content: center;
 }
 
- 
+.buttonRow {
+  padding-top: 20px
+}

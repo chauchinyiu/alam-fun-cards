@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button'
 import './DrawButton.css';
 
 class DrawButton extends Component{
@@ -15,7 +16,8 @@ class DrawButton extends Component{
     render(props){
         return(
             <div className="buttonContainer">
-                <button className="btn" onClick={this.drawCard}>Draw Card</button>
+                <Button variant="outline-dark" onClick={this.drawCard}>Draw Card</Button>
+                
             </div>
         )
     }
