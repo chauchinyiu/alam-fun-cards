@@ -3,6 +3,7 @@ import './App.css';
 import Card from './Card/Card';
 import DrawButton from './DrawButton/DrawButton';
 import NavBar from './NavBar/NavBar';
+import TextToSpeechButtons from './TextToSpeech/TextToSpeechButtons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -58,6 +59,12 @@ class App extends Component {
             german={this.state.currentCard.german}
             chinese={this.state.currentCard.chinese}
           />
+        </div>
+        <div className="speakerRow">
+          <TextToSpeechButtons   
+            english={this.state.currentCard.english}
+            german={this.state.currentCard.german}
+            chinese={this.state.currentCard.chinese}/>
         </div>
         <div className="buttonRow">
           <DrawButton drawCard={this.updateCard}/>
