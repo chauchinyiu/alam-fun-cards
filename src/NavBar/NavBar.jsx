@@ -10,11 +10,11 @@ class NavBar extends React.Component{
     render() {
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Alam's Fun Cards</Navbar.Brand>
+                <Navbar.Brand href="/">Alam's Fun Cards</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#deets">Quiz</Nav.Link>
+                        <Nav.Link href="/quiz">Quiz</Nav.Link>
                     </Nav>
                     
                     <Nav>
@@ -23,7 +23,7 @@ class NavBar extends React.Component{
                         Dank memes
                     </Nav.Link> */}
                       <NavDropdown title="Card Category" id="collasible-nav-dropdown">
-                         <NavDropdown.Item href="#action/3.1">Fruit</NavDropdown.Item>
+                         <NavDropdown.Item href="/card">Fruit</NavDropdown.Item>
                       </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
@@ -31,5 +31,9 @@ class NavBar extends React.Component{
         );
     }
 }
+
+
+
+
 
 export default NavBar
