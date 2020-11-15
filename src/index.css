@@ -21,9 +21,13 @@ code {
     monospace;
 }
 
-/* 
-*{
+html *
+{
+   font-family: Chalkduster, sans-serif!important;
+}
+
+/* * {
   background: #000 !important;
   color: #0f0 !important;
   outline: solid #f00 1px !important;
-} */
+}  */

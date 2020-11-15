@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    const currentCards = this.state.cards;
+
     fetch('https://learning-card-api.herokuapp.com/cards')
     .then(res => res.json())
     .then((data) => {
@@ -45,7 +45,10 @@ class App extends Component {
       cards: currentCards,
       currentCard: this.getRandomCard(currentCards)
     })
+
+    console.log("updateCard Called")
   }
+  
 
   render() {
     return (
@@ -53,8 +56,8 @@ class App extends Component {
       <NavBar/>
       <div className="App">
         <div className="cardRow">
-          <Card 
-            imageurl={this.state.currentCard.imageurl+"?w=700&h=400"}
+          <Card       
+            imageurl={this.state.currentCard.imageurl+"?fit=crop&w=400&h=400"}
             english={this.state.currentCard.english}
             german={this.state.currentCard.german}
             chinese={this.state.currentCard.chinese}

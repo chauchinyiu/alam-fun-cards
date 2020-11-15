@@ -1,28 +1,36 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import './Card.css';
+import ImageCarousel from '../Carousel/ImageCarousel'
 
 function Card(props) {
+    const [searchText, setSearchText] = useState(undefined)
+    
     
     useEffect(
         () => {
+          console.log('card props ', {props});
+          if (props.english) {
+              console.log('set search test', props.english)
+               setSearchText(props.english)
+          }
           setupListener();   
           return () => removeListener();
         },
         
-      );
+      [props,setupListener,removeListener]);
 
-
+  
   function setupListener() {
     var card = document.querySelector('.card');
-    card.addEventListener('click', flip);
+    card.addEventListener('dblclick', flip);
   }
 
   function removeListener() {
     var card = document.querySelector('.card');
-    card.removeEventListener("click", flip);
+    card.removeEventListener("dblclick", flip);
   }
+  
   function flip(event) {
-    console.log(event.target);
     var card = document.querySelector('.card');
     card.classList.toggle('flip');
   }
@@ -31,9 +39,9 @@ function Card(props) {
     <div className="card-container">
         <div className="card">
             <div className="front">
-                <img className="imageurl" src={props.imageurl}/>
+                  <ImageCarousel searchText={searchText}/> 
             </div>
-            <div className="back">
+            <div className="back" >
                 <div className="english">{props.english}</div>
                 <div className="german">{props.german}</div>
                 <div className="chinese">{props.chinese}</div>
