@@ -2,9 +2,10 @@
 
 .card-container {
   cursor: pointer;
-  height: 400px;
-  width: 700px;
-  perspective: 1200px;
+ /*  height: 400px;
+  width: 700px; */
+  height: 100%;
+  perspective: 1000px;
   position: relative;
   margin: auto;
   transition: ease-in;
@@ -12,15 +13,14 @@
 }
  
 .card {
-  height: 400px;
-  width: 700px;
+  height: 500px;
+  width: 700px;  
   position: relative;
   border: 2px solid #300;
   transform-style: preserve-3d;  
   transition: all 0.4s ease-in-out;
   border-radius: 20px;
   box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.16);
- 
 }
  
 .card.flip {
@@ -30,8 +30,7 @@
  
 .front,
 .back{
-  height: 400px;
-  width: 700px;
+
   position: absolute;
   overflow: auto;
   text-align: center;
@@ -41,9 +40,13 @@
  
 
 .back {
- 
+  height: 500px;
+  width: 700px;  
   transform: rotateY(-180deg);
-  background-color: white
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }    
 
  
@@ -55,18 +58,18 @@
 
 .english{
   color: #333;
-  font-size: 2.3em;
-  padding-top: 20px;
+  font-size: 4.5em;
+   
 }
 
 .german{
   color: #333;
-  font-size: 2.3em;
-  padding-top: 20px;
+  font-size: 4.5em;
+  
 }
 
 .chinese{
-    color: rgba(200, 10, 10, 1);
-    font-size: 2.3em;
-    padding-top: 20px;
+    color: #333;
+    font-size: 4.5em;
+   
 }

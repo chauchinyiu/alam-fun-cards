@@ -57,7 +57,7 @@ class CardApp extends Component {
       <div className="CardApp">
         <div className="cardRow">
           <Card       
-            imageurl={this.state.currentCard.imageurl+"?fit=crop&w=400&h=400"}
+            // imageurl={this.state.currentCard.imageurl+"?fit=crop&w=20&h=20"}
             english={this.state.currentCard.english}
             german={this.state.currentCard.german}
             chinese={this.state.currentCard.chinese}

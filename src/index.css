@@ -10,6 +10,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+
 }
 
 * {
@@ -21,13 +23,15 @@ code {
     monospace;
 }
 
-html *
-{
+html * {
    font-family: Chalkduster, sans-serif!important;
+}
+body {
+  background-color: #7cc6fe !important;
 }
 
 /* * {
   background: #000 !important;
   color: #0f0 !important;
   outline: solid #f00 1px !important;
-}  */
+}    */

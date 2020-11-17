@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import './Card.css';
 import ImageCarousel from '../Carousel/ImageCarousel'
-
+ 
 function Card(props) {
     const [searchText, setSearchText] = useState(undefined)
     
@@ -39,7 +39,7 @@ function Card(props) {
     <div className="card-container">
         <div className="card">
             <div className="front">
-                  <ImageCarousel searchText={searchText}/> 
+                <ImageCarousel searchText={searchText}/>
             </div>
             <div className="back" >
                 <div className="english">{props.english}</div>

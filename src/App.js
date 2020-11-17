@@ -5,8 +5,8 @@ import QuizApp from './QuizApp/QuizApp';
 // import DrawButton from './DrawButton/DrawButton';
 // import NavBar from './NavBar/NavBar';
 // import TextToSpeechButtons from './TextToSpeech/TextToSpeechButtons'
- import 'bootstrap/dist/css/bootstrap.min.css';
- import { Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Switch } from 'react-router-dom';
 
 
 // class App extends Component {

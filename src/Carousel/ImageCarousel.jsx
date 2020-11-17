@@ -1,7 +1,6 @@
 import React, { useEffect, useState }from 'react';
-import Carousel, { slidesToShowPlugin, slidesToScrollPlugin } from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
-import './ImageCarousel.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 function ImageCarousel(props) {
     const [slideImages, setSlideImages] = useState([])
@@ -52,27 +51,15 @@ function ImageCarousel(props) {
 
     return (
          
-            <Carousel className="carosel"
-            plugins={[
-                 
-                'centered',
-                'infinite',
-                'arrows',
-                {
-                    resolve: slidesToShowPlugin,
-                    options: {
-                        numberOfSlides: 2,
-                    },    
-                },
-                {
-                    resolve: slidesToScrollPlugin,
-                    options: {
-                        numberOfSlides: 2,
-                    },
-                },
-              
-            ]}   
-            >
+            <Carousel 
+            autoPlay 
+            infiniteLoop 
+            centerSlidePercentage='60'
+            showStatus={false}
+            swipeable
+            thumbWidth={50}
+            showThumbs={props.showThumbs}
+            centerMode>
            {slideImages.map((each, index) => (
               <div key={index} className="each-slide">
                 <img className="lazy" src={each} alt={props.english} />
