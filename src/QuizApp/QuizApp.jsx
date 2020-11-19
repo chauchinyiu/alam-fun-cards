@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../NavBar/NavBar'
 import ImageCarousel from '../Carousel/ImageCarousel' 
 import Button from 'react-bootstrap/Button'
@@ -42,6 +42,38 @@ function QuizApp(props) {
 			],
 		},
 	];
+    useEffect(() => {
+        // Anything in here is fired on component mount.
+        console.log('Quiz props start', props )
+        loadCards()
+        
+	}, [props]);
+	
+
+	const loadCards = () => {
+		fetch('https://learning-card-api.herokuapp.com/cards')
+		.then(res => res.json())
+		.then((data) => {
+		  console.log("update data", data)
+		 
+		   generateQuestions(data)
+		})
+		.catch(console.log)
+	}
+	const generateQuestions = function(cards) {
+		let selectedCards =  getRandomArrayElements(cards, 10)
+		console.log("selected cards", selectedCards)
+	}
+	const getRandomArrayElements = function(arr, count) {
+        var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+        while (i-- > min) {
+            index = Math.floor((i + 1) * Math.random());
+            temp = shuffled[index];
+            shuffled[index] = shuffled[i];
+            shuffled[i] = temp;
+        }
+        return shuffled.slice(min);
+    }
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);

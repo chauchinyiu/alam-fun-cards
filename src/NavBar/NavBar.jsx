@@ -1,12 +1,31 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { LinkContainer } from 'react-router-bootstrap';
 
 import './NavBar.css';
+ 
 
-class NavBar extends React.Component{
+class NavBar extends Component{
+    constructor(props){
+        super(props);
+         this.state = {
+            categories: props.categories ? props.categories : []
+        }
+        console.log('props in navbar :::: ', props.categories)
+     }
+
+    componentWillMount() {
+        fetch('https://learning-card-api.herokuapp.com/categories')
+        .then(res => res.json())
+        .then((data) => {
+          console.log("update categories", data)
+         this.setState({categories:data})   
+    })
+        .catch(console.log)
+    }
+ 
     render() {
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -18,12 +37,19 @@ class NavBar extends React.Component{
                     </Nav>
                     
                     <Nav>
-                    {/* 
-                    <Nav.Link eventKey={2} href="#memes">
-                        Dank memes
-                    </Nav.Link> */}
+                     
                       <NavDropdown title="Card Category" id="collasible-nav-dropdown">
-                         <NavDropdown.Item href="/card">Fruit</NavDropdown.Item>
+                     
+                         {this.state.categories.map((each, index) => (
+                             <LinkContainer key={each.category} to={{
+                                pathname: "/cards/category/"+each.category, 
+                                param1: each.category
+                                }} >
+                             <NavDropdown.Item>{each.category}</NavDropdown.Item>
+                            
+                             </LinkContainer>
+                         ))} 
+                     
                       </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

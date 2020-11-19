@@ -12,22 +12,40 @@ class CardApp extends Component {
   constructor(props){
     super(props);
     this.updateCard = this.updateCard.bind(this);
-    this.state = {
+     this.state = {
       cards: [],
-      currentCard: {} 
+      currentCard: {},
+      category: ''
+    }
+  }
+  
+  componentDidUpdate(){
+    const cat = this.props.match.params.category;
+    console.log("componentDidUpdate called : ", cat)
+    if (cat && cat !== this.state.category) {
+       this.getCardsByCategory(cat)
     }
   }
 
   componentWillMount(){
-
+    const cat = this.props.match.params.category;
+    console.log("componentWillMount called: ", cat)
+    if (cat) {
+      this.getCardsByCategory(cat)
+    }else{
+      this.getAllCards()
+    }
+  }
+  
+  
+  getAllCards(){
     fetch('https://learning-card-api.herokuapp.com/cards')
     .then(res => res.json())
     .then((data) => {
       console.log("update data", data)
-      this.setState({ cards: data, currentCard: this.getRandomCard(data)})
+      this.setState({ cards: data, currentCard: this.getRandomCard(data), category: ''})
     })
     .catch(console.log)
- 
   }
 
   getRandomCard(currentCards){
@@ -49,15 +67,24 @@ class CardApp extends Component {
     console.log("updateCard Called")
   }
   
+  getCardsByCategory(category){
+    console.log("getCardsByCategory called with parameter ", category)
+    fetch('https://learning-card-api.herokuapp.com/cards?category='+ category)
+    .then(res => res.json())
+    .then((data) => {
+      console.log("getCardsByCategory called ", data)
+      this.setState({ cards: data, currentCard: this.getRandomCard(data), category: category})
+    })
+    .catch(console.log)
+  }
 
   render() {
     return (
       <div>
-      <NavBar/>
+      <NavBar getCardsByCategory={this.getCardsByCategory}/>
       <div className="CardApp">
         <div className="cardRow">
-          <Card       
-            // imageurl={this.state.currentCard.imageurl+"?fit=crop&w=20&h=20"}
+          <Card          
             english={this.state.currentCard.english}
             german={this.state.currentCard.german}
             chinese={this.state.currentCard.chinese}
