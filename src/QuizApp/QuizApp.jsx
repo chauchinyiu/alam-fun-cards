@@ -8,14 +8,17 @@ import {getRandomArrayElements, removeItemOnce, shuffle} from '../Utility/Utils'
 function QuizApp(props) {
 
 	const [questions, setQuestions] = useState([{id_text:"loading ...", answerOptions:[{id_answer :"wait", answerText: "wait"}]}])
-	const [language, setLanguage] = useState("en")
+	// const [language, setLanguage] = useState()
     useEffect(() => {
         // Anything in here is fired on component mount.
 		console.log('Quiz props start', props )
 		const lang = props.match.params.lang;
-		setLanguage(lang)
-        loadCards()
-        
+		 
+		console.log("lang ====== ", lang)
+		 
+		loadCards()
+		 
+  
 	}, [props]);
 	
 
@@ -33,6 +36,7 @@ function QuizApp(props) {
 		let selectedCards =  getRandomArrayElements(cards, 10)
 		console.log("selected cards", selectedCards)
 		var result = []
+		
 		for (var i = 0; i < selectedCards.length; i++) {
 			 
 			 var answerOptions = [{id_answer: selectedCards[i].english, answerText: answerTextByLanguage(selectedCards[i])}]
@@ -51,10 +55,10 @@ function QuizApp(props) {
 	}
 	
 	const answerTextByLanguage = function (card) {
-
-		if (language === 'zh-hk') {
+		const lang = props.match.params.lang;
+		if (lang === 'zh-hk') {
 			return card.chinese
-		} else if (language === 'de') {
+		} else if (lang === 'de') {
 			return card.german 
 		} else {
 			return card.english
