@@ -5,7 +5,7 @@ import DrawButton from '../DrawButton/DrawButton';
 import NavBar from '../NavBar/NavBar';
 import TextToSpeechButtons from '../TextToSpeech/TextToSpeechButtons'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {getRandomCard} from '../Utility/Utils'
 
 
 class CardApp extends Component {
@@ -43,25 +43,16 @@ class CardApp extends Component {
     .then(res => res.json())
     .then((data) => {
       console.log("update data", data)
-      this.setState({ cards: data, currentCard: this.getRandomCard(data), category: ''})
+      this.setState({ cards: data, currentCard: getRandomCard(data, this.state.currentCard), category: ''})
     })
     .catch(console.log)
-  }
-
-  getRandomCard(currentCards){
-    var randomIndex = Math.floor(Math.random() * currentCards.length);
-    var card = currentCards[randomIndex];
-    if(card === this.state.currentCard){
-      this.getRandomCard(currentCards)
-    }
-    return(card);
   }
 
   updateCard(){
     const currentCards = this.state.cards;
     this.setState({
       cards: currentCards,
-      currentCard: this.getRandomCard(currentCards)
+      currentCard: getRandomCard(currentCards, this.state.currentCard)
     })
 
     console.log("updateCard Called")
@@ -73,7 +64,7 @@ class CardApp extends Component {
     .then(res => res.json())
     .then((data) => {
       console.log("getCardsByCategory called ", data)
-      this.setState({ cards: data, currentCard: this.getRandomCard(data), category: category})
+      this.setState({ cards: data, currentCard: getRandomCard(data, this.state.currentCard), category: category})
     })
     .catch(console.log)
   }

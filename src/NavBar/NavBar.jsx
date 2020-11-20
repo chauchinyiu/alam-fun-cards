@@ -33,7 +33,22 @@ class NavBar extends Component{
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/quiz">Quiz</Nav.Link>
+                        {/* <Nav.Link href="/quiz">Quiz</Nav.Link> */}
+                        <NavDropdown title="Quiz" id="collasible-nav-dropdown">
+                         <LinkContainer key="en" to={{
+                                     pathname: "/quiz/language/en"}}>
+                                 <NavDropdown.Item>English 🇬🇧</NavDropdown.Item>
+                         </LinkContainer>
+                         <LinkContainer key="de" to={{
+                                     pathname: "/quiz/language/de"}}>
+                                 <NavDropdown.Item>German 🇩🇪</NavDropdown.Item>
+                         </LinkContainer>
+                         <LinkContainer key="zh-hk" to={{
+                                     pathname: "/quiz/language/zh-hk"}}>
+                                 <NavDropdown.Item>Chinese 🇭🇰</NavDropdown.Item>
+                         </LinkContainer> 
+                 
+                         </NavDropdown>
                     </Nav>
                     
                     <Nav>

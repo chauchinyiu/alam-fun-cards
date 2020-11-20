@@ -1,6 +1,7 @@
 import React, { useEffect, useState }from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import {getRandomArrayElements} from '../Utility/Utils'
 
 function ImageCarousel(props) {
     const [slideImages, setSlideImages] = useState([])
@@ -37,18 +38,7 @@ function ImageCarousel(props) {
         })
         .catch(console.log)
      }
-
-     const getRandomArrayElements = function(arr, count) {
-        var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
-        while (i-- > min) {
-            index = Math.floor((i + 1) * Math.random());
-            temp = shuffled[index];
-            shuffled[index] = shuffled[i];
-            shuffled[i] = temp;
-        }
-        return shuffled.slice(min);
-    }
-
+ 
     return (
          
             <Carousel 
