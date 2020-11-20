@@ -27,7 +27,9 @@ function Card(props) {
 
   function removeListener() {
     var card = document.querySelector('.card');
-    card.removeEventListener("dblclick", flip);
+    if (card) {
+      card.removeEventListener("dblclick", flip);
+    }
   }
   
   function flip(event) {
