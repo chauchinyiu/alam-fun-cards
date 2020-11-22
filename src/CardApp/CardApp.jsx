@@ -6,12 +6,14 @@ import NavBar from '../NavBar/NavBar';
 import TextToSpeechButtons from '../TextToSpeech/TextToSpeechButtons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {getRandomCard} from '../Utility/Utils'
-
+import findIndex from 'lodash/findIndex'
 
 class CardApp extends Component {
   constructor(props){
     super(props);
     this.updateCard = this.updateCard.bind(this);
+    this.nextCard = this.nextCard.bind(this);
+    this.previousCard = this.previousCard.bind(this);
      this.state = {
       cards: [],
       currentCard: {},
@@ -27,7 +29,7 @@ class CardApp extends Component {
     }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     const cat = this.props.match.params.category;
     console.log("componentWillMount called: ", cat)
     if (cat) {
@@ -43,9 +45,38 @@ class CardApp extends Component {
     .then(res => res.json())
     .then((data) => {
       console.log("update data", data)
-      this.setState({ cards: data, currentCard: getRandomCard(data, this.state.currentCard), category: ''})
+      this.setState({ cards: data, currentCard: data[0], category: ''})
     })
     .catch(console.log)
+  }
+
+
+  nextCard() {
+    var currentIndex =  findIndex(this.state.cards, this.state.currentCard);
+    var nextIndex = currentIndex + 1
+    if (nextIndex > this.state.cards.length - 1) {
+       nextIndex = currentCards.length - 1
+    }
+    const currentCards = this.state.cards;
+    this.setState({
+      cards: currentCards,
+      currentCard: currentCards[nextIndex]
+    })
+  }
+
+  previousCard() {
+   
+    var currentIndex =  findIndex(this.state.cards, this.state.currentCard);
+
+    var previousIndex = currentIndex - 1
+    if (previousIndex < 0) {
+      previousIndex = 0
+    }
+    const currentCards = this.state.cards;
+    this.setState({
+      cards: currentCards,
+      currentCard: currentCards[previousIndex]
+    })
   }
 
   updateCard(){
@@ -88,7 +119,7 @@ class CardApp extends Component {
             chinese={this.state.currentCard.chinese}/>
         </div>
         <div className="buttonRow">
-          <DrawButton drawCard={this.updateCard}/>
+          <DrawButton drawCard={this.updateCard} nextCard={this.nextCard} previousCard={this.previousCard}/>
         </div>
       </div>
       </div>

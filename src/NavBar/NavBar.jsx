@@ -16,7 +16,7 @@ class NavBar extends Component{
         console.log('props in navbar :::: ', props.categories)
      }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch('https://learning-card-api.herokuapp.com/categories')
         .then(res => res.json())
         .then((data) => {
@@ -41,11 +41,11 @@ class NavBar extends Component{
                          </LinkContainer>
                          <LinkContainer key="de" to={{
                                      pathname: "/quiz/language/de"}}>
-                                 <NavDropdown.Item>German 🇩🇪</NavDropdown.Item>
+                                 <NavDropdown.Item>Deutsch 🇩🇪</NavDropdown.Item>
                          </LinkContainer>
                          <LinkContainer key="zh-hk" to={{
                                      pathname: "/quiz/language/zh-hk"}}>
-                                 <NavDropdown.Item>Chinese 🇭🇰</NavDropdown.Item>
+                                 <NavDropdown.Item>中文 🇭🇰</NavDropdown.Item>
                          </LinkContainer> 
                  
                          </NavDropdown>

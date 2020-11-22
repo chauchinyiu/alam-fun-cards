@@ -8,16 +8,8 @@ function ImageCarousel(props) {
     const [currentSearchText, setCurrentSearchText] = useState()
     
     useEffect(() => {
-        // Anything in here is fired on component mount.
-        console.log('carousel props', props, currentSearchText)
-        if ((props) && (props.searchText !== currentSearchText)) { 
-            console.log('loading imaged')
-            loadImages(props)
-        }
-        
-    }, [props]);
 
-    function loadImages(){
+     const loadImages =  () => {
         setSlideImages([]);
         const imageUrl = `https://api.unsplash.com/search/photos?page=1&client_id=284ab250f4d0cd5fe2d1538ffa5d30a58d76e96fadfc90362d0a7aeb3191ef20&query=${props.searchText}`;
         console.log('images url ', imageUrl)
@@ -38,6 +30,16 @@ function ImageCarousel(props) {
         })
         .catch(console.log)
      }
+        // Anything in here is fired on component mount.
+        console.log('carousel props', props, currentSearchText)
+        if ((props) && (props.searchText !== currentSearchText)) { 
+            console.log('loading imaged')
+            loadImages(props)
+        }
+        
+    }, [props,currentSearchText]);
+
+ 
  
     return (
          
