@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
-import ImageCarousel from '../Carousel/ImageCarousel'
+import ImageCarousel from '../Carousel/ImageCarousel';
 import ReactCardFlip from 'react-card-flip'; 
+import ControlToolBar from '../ControlToolBar/ControlToolBar';
 import './FlipCard.css';
 function Card(props) {
     const [searchText, setSearchText] = useState(undefined)
@@ -21,12 +22,14 @@ function Card(props) {
 
 
  
-   const handleClick = () => {
+   const flipCard = () => {
         
         setIsFlipped(!isFlipped);
 
         console.log("flipped ???? ", {isFlipped})
    }
+   
+
  
  
     return (
@@ -34,13 +37,19 @@ function Card(props) {
         <div className = "card">
    
           <ImageCarousel searchText={searchText}/>  
-           <button onClick={() => handleClick()}>Flip Card</button>
+          <ControlToolBar 
+            flipCard={flipCard}
+            nextCard={props.nextCard}
+            previousCard={props.previousCard}/>
         </div>
         <div className="card" >
                 <div className="english">{props.english}</div>
                 <div className="german">{props.german}</div>
                 <div className="chinese">{props.chinese}</div>
-                <button onClick={() => handleClick()}>Flip Card</button>
+                <ControlToolBar 
+                 flipCard={flipCard}
+                 nextCard={props.nextCard}
+              previousCard={props.previousCard}/>
          </div>
       </ReactCardFlip>
     );

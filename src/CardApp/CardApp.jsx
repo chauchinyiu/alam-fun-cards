@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './CardApp.css';
 import FlipCard from '../Card/FlipCard';
-import DrawButton from '../DrawButton/DrawButton';
 import TextToSpeechButtons from '../TextToSpeech/TextToSpeechButtons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {getRandomCard} from '../Utility/Utils'
@@ -13,7 +12,7 @@ class CardApp extends Component {
     this.updateCard = this.updateCard.bind(this);
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this);
-     this.state = {
+    this.state = {
       cards: [],
       currentCard: {},
       category: ''
@@ -51,7 +50,7 @@ class CardApp extends Component {
 
 
   nextCard() {
-    var currentIndex =  findIndex(this.state.cards, this.state.currentCard);
+    var currentIndex = findIndex(this.state.cards, this.state.currentCard);
     var nextIndex = currentIndex + 1
     if (nextIndex > this.state.cards.length - 1) {
        nextIndex = this.state.cards.length - 1
@@ -66,7 +65,6 @@ class CardApp extends Component {
   previousCard() {
    
     var currentIndex =  findIndex(this.state.cards, this.state.currentCard);
-
     var previousIndex = currentIndex - 1
     if (previousIndex < 0) {
       previousIndex = 0
@@ -105,6 +103,8 @@ class CardApp extends Component {
        <div className="CardApp">
           <div className="cardRow"> 
                <FlipCard 
+                  nextCard={this.nextCard} 
+                  previousCard={this.previousCard}
                   english={this.state.currentCard.english}
                   german={this.state.currentCard.german}
                   chinese={this.state.currentCard.chinese}
@@ -116,9 +116,6 @@ class CardApp extends Component {
                 german={this.state.currentCard.german}
                 chinese={this.state.currentCard.chinese}/>
             </div>  
-          <div className="buttonRow">
-            <DrawButton drawCard={this.updateCard} nextCard={this.nextCard} previousCard={this.previousCard}/>
-          </div>
         </div>
      
     );

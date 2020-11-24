@@ -20,3 +20,10 @@
   box-shadow: 0px 0px #2c3e50;
   background: #2c3e50;
 } */
+
+#flippedIcon {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
