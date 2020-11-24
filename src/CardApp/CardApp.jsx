@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './CardApp.css';
-import Card from '../Card/Card';
+import FlipCard from '../Card/FlipCard';
 import DrawButton from '../DrawButton/DrawButton';
-import NavBar from '../NavBar/NavBar';
 import TextToSpeechButtons from '../TextToSpeech/TextToSpeechButtons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {getRandomCard} from '../Utility/Utils'
@@ -55,7 +54,7 @@ class CardApp extends Component {
     var currentIndex =  findIndex(this.state.cards, this.state.currentCard);
     var nextIndex = currentIndex + 1
     if (nextIndex > this.state.cards.length - 1) {
-       nextIndex = currentCards.length - 1
+       nextIndex = this.state.cards.length - 1
     }
     const currentCards = this.state.cards;
     this.setState({
@@ -102,27 +101,26 @@ class CardApp extends Component {
 
   render() {
     return (
-      <div>
-      <NavBar getCardsByCategory={this.getCardsByCategory}/>
-      <div className="CardApp">
-        <div className="cardRow">
-          <Card          
-            english={this.state.currentCard.english}
-            german={this.state.currentCard.german}
-            chinese={this.state.currentCard.chinese}
-          />
+     
+       <div className="CardApp">
+          <div className="cardRow"> 
+               <FlipCard 
+                  english={this.state.currentCard.english}
+                  german={this.state.currentCard.german}
+                  chinese={this.state.currentCard.chinese}
+               />
+          </div>  
+          <div className="speakerRow">
+              <TextToSpeechButtons   
+                english={this.state.currentCard.english}
+                german={this.state.currentCard.german}
+                chinese={this.state.currentCard.chinese}/>
+            </div>  
+          <div className="buttonRow">
+            <DrawButton drawCard={this.updateCard} nextCard={this.nextCard} previousCard={this.previousCard}/>
+          </div>
         </div>
-        <div className="speakerRow">
-          <TextToSpeechButtons   
-            english={this.state.currentCard.english}
-            german={this.state.currentCard.german}
-            chinese={this.state.currentCard.chinese}/>
-        </div>
-        <div className="buttonRow">
-          <DrawButton drawCard={this.updateCard} nextCard={this.nextCard} previousCard={this.previousCard}/>
-        </div>
-      </div>
-      </div>
+     
     );
   }
 }

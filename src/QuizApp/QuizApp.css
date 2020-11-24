@@ -1,14 +1,13 @@
 
 .quizApp {
   background-color: #252d4a;
-  width: 700px;
-  min-height: 200px;
-  height: min-content;
+ 
   border-radius: 15px;
   padding: 20px;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
-  display: flex;
+  display: block;
   justify-content: space-evenly;
+ 
 }
  
 .score-section {
@@ -22,6 +21,8 @@
   
   width: 100%;
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .question-count {
@@ -31,10 +32,7 @@
 .question-count span {
   font-size: 28px;
 }
-
-.question-text {
-  margin-bottom: 12px;
-}
+ 
 
 .timer-text {
   background: rgb(230, 153, 12);
@@ -52,11 +50,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .question-image {
-  width:700px;
-
-}
+  max-width: 800px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80vw;
+  position: relative;
+  margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+}  
 button {
   width: 100%;
   font-size: 16px;
@@ -65,13 +70,10 @@ button {
   border-radius: 15px;
  
   padding: 5px;
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: center; */
   border: 5px solid #234668;
   cursor: pointer;
   box-sizing: border-box;
-  margin: 10px;  
+  margin: 5px;   
   text-align: center;
   line-height: 1em;
 }
@@ -97,3 +99,9 @@ button:focus {
 button svg {
   margin-right: 5px;
 }
+
+  .nextbutton {
+ 
+  border-radius: 25px;
+ 
+}  

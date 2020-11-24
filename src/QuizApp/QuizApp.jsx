@@ -91,7 +91,7 @@ function QuizApp(props) {
 
 	return (
         <div>
-            <NavBar/>
+            {/* <NavBar/> */}
             <div id='quizApp'>
                 {showScore ? (
                     <div className='score-section'>
@@ -101,14 +101,13 @@ function QuizApp(props) {
                     <div>
                         <div className='question-section'>
                             <div className='question-count'>
-                                <span>Question {currentQuestion + 1}</span>/{questions.length}
+                                <span>Question {currentQuestion + 1}</span>/{questions.length} : What is this?
                             </div>
-                            <div className='question-text'>What is this?</div>
-                        </div>
+                        </div>  
 						<div className='question-image'>
 							<ImageCarousel showThumbs={false} searchText={questions[currentQuestion].id_text}/>
 						</div>	
-                        <div className='answer-section'>
+                         <div className='answer-section'>
                             {questions[currentQuestion].answerOptions.map((answerOption) => (
 								<button disabled={userAnswer ? true : false}
 								className={
@@ -121,8 +120,9 @@ function QuizApp(props) {
 								key={answerOption.id_answer}
 								 onClick={() => handleAnswerOptionClick(answerOption, questions[currentQuestion].id_text)} > {answerOption.answerText} </button>
                             ))}
+						 	<Button className="nextbutton" variant={userAnswer?"dark":"outline-dark"} disabled={userAnswer?false:true}  onClick={() => next()}> Next </Button>  
+
                         </div>
-						<Button variant={userAnswer?"dark":"outline-dark"} disabled={userAnswer?false:true}  onClick={() => next()}> Next </Button>
 
                     </div>
                 )}

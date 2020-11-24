@@ -1,0 +1,34 @@
+
+
+.english{
+    color: #333;
+    font-size: 2.5em;
+     
+  }
+  
+  .german{
+    color: #333;
+    font-size: 2.5em;
+    
+  }
+  
+  .chinese{
+      color: #333;
+      font-size: 4em;
+       
+  }
+
+  .card {
+    border: 1px solid #eeeeee ; 
+    border-radius:  3px;
+    padding: 15px;
+   
+    max-width: 800px;
+    width: 80vw;
+    position: absolute;
+   
+    margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+    backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
+  } 

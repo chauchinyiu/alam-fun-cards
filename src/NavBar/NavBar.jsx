@@ -3,7 +3,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
-
 import './NavBar.css';
  
 
@@ -28,7 +27,7 @@ class NavBar extends Component{
  
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar className="main-nav-bar" collapseOnSelect expand="lg" bg="dark" fixed="top" variant="dark">
                 <Navbar.Brand href="/">Alam's Fun Cards</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -72,9 +71,5 @@ class NavBar extends Component{
         );
     }
 }
-
-
-
-
 
 export default NavBar

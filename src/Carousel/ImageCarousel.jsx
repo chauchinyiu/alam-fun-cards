@@ -44,10 +44,13 @@ function ImageCarousel(props) {
     return (
          
             <Carousel 
+            className="main-carousel"
             autoPlay 
             infiniteLoop 
             centerSlidePercentage='60'
             showStatus={false}
+            useKeyboardArrows = {true}
+            showArrows = {false}
             swipeable
             thumbWidth={50}
             showThumbs={props.showThumbs}
