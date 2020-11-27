@@ -7,24 +7,11 @@ import { DEFAULTS } from '../Utility/appEnums';
  
 function TextToSpeechButtons(props) {
     const api = 'dcfef15cf8cf49c8babeedb6bbdccf27';
-    const [speech, setSpeech] = useState(DEFAULTS.SPEECH);
-    useEffect(() => {
-        // Anything in here is fired on component mount.
-		
-        // var nothing = new Audio( `http://touchbasicapp.com/nothing.wav `)
-		// nothing.play()
-		 
-		 
-  
-	}, [props]);
-    
+     
     function handleClick(text, language) {
-        const audioSrc = `http://api.voicerss.org/?key=${api}&hl=${language}&src=${text}&r=-5&v=Chen`
-    
+        const audioSrc = `http://api.voicerss.org/?key=${api}&hl=${language}&src=${text}&r=-5&v=Chen&c=MP3`
         console.log(audioSrc)
-        setSpeech(audioSrc)
-        new Audio(audioSrc).play();
-        
+        new Audio(audioSrc).play();   
     };
   
     return(
@@ -34,7 +21,6 @@ function TextToSpeechButtons(props) {
                      <Button variant="outline-dark" onClick= {() => handleClick(props.german, 'de-de' )}>🇩🇪</Button>
                      <Button variant="outline-dark" onClick= {() => handleClick(props.chinese, 'zh-hk')}>🇭🇰</Button>
                 </ButtonGroup>     
-                   {/* <audio autoPlay src={speech}></audio>   */}
             </div>
     );
      
