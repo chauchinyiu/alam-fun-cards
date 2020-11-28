@@ -14,11 +14,11 @@ function QuizApp(props) {
 		const lang = props.match.params.lang;
 		 
 		console.log("lang ====== ", lang)
-		 
+		 // eslint-disable-next-line react-hooks/exhaustive-deps
 		loadCards()
 		 
   
-	}, [props,loadCards]);
+	}, [props]);
 	
 
 	const loadCards = () => {
