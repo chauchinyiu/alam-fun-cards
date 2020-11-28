@@ -9,6 +9,50 @@ function QuizApp(props) {
 	const [questions, setQuestions] = useState([{id_text:"loading ...", answerOptions:[{id_answer :"wait", answerText: "wait"}]}])
 	// const [language, setLanguage] = useState()
     useEffect(() => {
+
+		const loadCards = () => {
+			fetch('https://learning-card-api.herokuapp.com/cards')
+			.then(res => res.json())
+			.then((data) => {
+			  console.log("update data", data)
+			  generateQuestions(data)
+			})
+			.catch(console.log)
+		}
+
+		const generateQuestions = function(cards) {
+			let selectedCards =  getRandomArrayElements(cards, 10)
+			console.log("selected cards", selectedCards)
+			var result = []
+			
+			for (var i = 0; i < selectedCards.length; i++) {
+				 
+				 var answerOptions = [{id_answer: selectedCards[i].english, answerText: answerTextByLanguage(selectedCards[i])}]
+				 var othercards = removeItemOnce(selectedCards, selectedCards[i])
+				 var options = getRandomArrayElements(othercards, 3)
+				  
+				 for(var j=0; j < options.length; j++) {
+					 answerOptions.push({id_answer: options[j].english, answerText : answerTextByLanguage(options[j])})
+				 }
+				 
+				 let questionObject = {id_text: selectedCards[i].english,  answerOptions: shuffle(answerOptions)}
+				 result.push(questionObject)
+			 }
+			 console.log("Generate Question ::::::", result)
+			 setQuestions(result)
+		}
+		
+		const answerTextByLanguage = function (card) {
+			const lang = props.match.params.lang;
+			if (lang === 'zh-hk') {
+				return card.chinese
+			} else if (lang === 'de') {
+				return card.german 
+			} else {
+				return card.english
+			}
+		}
+
         // Anything in here is fired on component mount.
 		console.log('Quiz props start', props )
 		const lang = props.match.params.lang;
@@ -20,49 +64,6 @@ function QuizApp(props) {
   
 	}, [props]);
 	
-
-	const loadCards = () => {
-		fetch('https://learning-card-api.herokuapp.com/cards')
-		.then(res => res.json())
-		.then((data) => {
-		  console.log("update data", data)
-		  generateQuestions(data)
-		})
-		.catch(console.log)
-	}
-
-	const generateQuestions = function(cards) {
-		let selectedCards =  getRandomArrayElements(cards, 10)
-		console.log("selected cards", selectedCards)
-		var result = []
-		
-		for (var i = 0; i < selectedCards.length; i++) {
-			 
-			 var answerOptions = [{id_answer: selectedCards[i].english, answerText: answerTextByLanguage(selectedCards[i])}]
-			 var othercards = removeItemOnce(selectedCards, selectedCards[i])
-			 var options = getRandomArrayElements(othercards, 3)
-			  
-			 for(var j=0; j < options.length; j++) {
-				 answerOptions.push({id_answer: options[j].english, answerText : answerTextByLanguage(options[j])})
-			 }
-			 
-			 let questionObject = {id_text: selectedCards[i].english,  answerOptions: shuffle(answerOptions)}
-			 result.push(questionObject)
-		 }
-		 console.log("Generate Question ::::::", result)
-		 setQuestions(result)
-	}
-	
-	const answerTextByLanguage = function (card) {
-		const lang = props.match.params.lang;
-		if (lang === 'zh-hk') {
-			return card.chinese
-		} else if (lang === 'de') {
-			return card.german 
-		} else {
-			return card.english
-		}
-	}
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
