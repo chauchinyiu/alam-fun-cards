@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../NavBar/NavBar'
 import ImageCarousel from '../Carousel/ImageCarousel' 
 import Button from 'react-bootstrap/Button'
 import './QuizApp.css';
