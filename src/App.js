@@ -8,6 +8,7 @@ import NavBar from './NavBar/NavBar';
 class App extends Component {
 
   render() {  
+        console.log("render app")
         return (
             <div> 
                <NavBar/>
@@ -22,6 +23,6 @@ class App extends Component {
             </div>
         );
    }
- 
+   
 }
 export default App;
