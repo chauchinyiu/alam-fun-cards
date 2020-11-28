@@ -18,7 +18,7 @@ function QuizApp(props) {
 		loadCards()
 		 
   
-	}, [props]);
+	}, [props,loadCards]);
 	
 
 	const loadCards = () => {
