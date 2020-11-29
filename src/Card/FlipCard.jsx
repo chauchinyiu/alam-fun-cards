@@ -11,8 +11,8 @@ function Card(props) {
         () => {
           console.log('card props ', {props});
           if (props.english) {
-              console.log('set search test', props.english)
-               setSearchText(props.english)
+              console.log('set search test', props.english + props.category)
+               setSearchText(props.english +","+ props.category)
           }
 
         return;

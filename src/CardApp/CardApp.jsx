@@ -108,6 +108,7 @@ class CardApp extends Component {
                   english={this.state.currentCard.english}
                   german={this.state.currentCard.german}
                   chinese={this.state.currentCard.chinese}
+                  category={this.state.currentCard.category}
                />
           </div>  
           <div className="speakerRow">
